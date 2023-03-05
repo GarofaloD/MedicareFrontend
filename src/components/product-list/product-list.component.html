@@ -9,14 +9,17 @@
 
             <!--            button for product detail-->
             <a routerLink="/products/{{tempProduct.id}}">
-              <img src="{{tempProduct.imageUrl}}" class="img-responsive">
+<!--              <img src="{{tempProduct.imageUrl}}" class="img-responsive">-->
+              <img src="https://www.cvs.com/bizcontent/merchandising/productimages/large/41554503098.jpg" class="img-responsive">
             </a>
+
 
             <!--            button for product detail-->
             <a routerLink="/products/{{tempProduct.id}}">
-              <h1>{{tempProduct.id}}</h1>
+              <h1 class="productName">{{tempProduct.name}}</h1>
             </a>
 
+            <hr style="width: 50%">
             <div class="price">{{tempProduct.unitPrice | currency:'USD'}}</div>
             <button href="#" class="btn btn-primary btn-sm" >Add to Cart</button>
           </div>

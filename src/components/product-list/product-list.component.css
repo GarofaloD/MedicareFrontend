@@ -1,0 +1,12 @@
+.productName{
+  text-decoration: none !important;
+}
+
+.product-box a{
+  text-decoration: none !important;
+  width: 100%;
+}
+
+.product-box a h1{
+  border-bottom: none;
+}
