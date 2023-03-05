@@ -8,7 +8,9 @@ export class Product {
               public unitPrice: number,
               public unitsInStock: number,
               public active: boolean,
-              public imageUrl: string){
+              public imageUrl: string,
+              public dateCreated: Date,
+              public dateUpdated: Date){
   }
 
 
