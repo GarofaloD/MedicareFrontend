@@ -5,15 +5,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {ProductService} from "../services/product/product.service";
 import {HttpClientModule} from "@angular/common/http";
+import {ProductListComponent} from "../components/product-list/product-list.component";
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ProductListComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule
+
   ],
   providers: [ProductService],
   bootstrap: [AppComponent]
