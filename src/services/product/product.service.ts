@@ -18,11 +18,19 @@ export class ProductService {
 
   //CUSTOM METHODS
   //GET ALL PRODUCTS
-  public getAllProducts(): Observable<Product[]>{
-    return this.httpClient.get<GetResponseProducts>(this.baseUrl).pipe(
+  public getAllProducts(productCategory: number): Observable<Product[]>{
+
+    //url for category
+    const searchUrl = `${this.baseUrl}search/findByCategoryId?id=${productCategory}`
+
+    //Fetch the data
+    //Now based on the modified search url
+    return this.httpClient.get<GetResponseProducts>(searchUrl).pipe(
       map(response => response._embedded.products)
     )
+
   }
+
 
 
   //GET INDIVIDUAL PRODUCT
