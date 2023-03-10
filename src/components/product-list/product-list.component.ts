@@ -40,6 +40,7 @@ export class ProductListComponent implements OnInit{
    if(hasCategoryId){
      //get the id from param string
      this.currentCategoryId = +this.route.snapshot.paramMap.get('id')!
+     console.log(`This is the current category id= ${this.currentCategoryId}`)
    }
    else {
      //not available
