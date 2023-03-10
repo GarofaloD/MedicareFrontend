@@ -13,6 +13,7 @@ export class ProductListComponent implements OnInit{
   //PROPERTIES
   products : Product[] = []
   currentCategoryId: number = 1;
+  currentCategoryName: string = ""
 
   //CONTRUCTOR
   constructor(private productService: ProductService, private route: ActivatedRoute) { }
@@ -41,10 +42,16 @@ export class ProductListComponent implements OnInit{
      //get the id from param string
      this.currentCategoryId = +this.route.snapshot.paramMap.get('id')!
      console.log(`This is the current category id= ${this.currentCategoryId}`)
+
+     //get the name from the param string
+     this.currentCategoryId = +this.route.snapshot.paramMap.get('name')!
+     console.log(`This is the current category name= ${this.currentCategoryName}`)
+
    }
    else {
      //not available
      this.currentCategoryId = 1;
+     this.currentCategoryName = 'Beauty';
    }
 
 
