@@ -27,16 +27,13 @@ export class ProductService {
 
       //Fetch the data
       //Now based on the modified search url
-      return this.httpClient.get<GetResponseProducts>(searchUrl).pipe(
-        map(response => response._embedded.products)
-      )
+      return this.getProductsFromBackend(searchUrl);
 
     }
 
 
-
-  //GET INDIVIDUAL PRODUCT
-    public getProduct(productId: number):Observable<Product>{ //returning only one product
+    //GET INDIVIDUAL PRODUCT
+    public getSingleProduct(productId: number):Observable<Product>{ //returning only one product
 
       //url for individual products
       const prodURL = `${this.baseUrl}/${productId}`
@@ -45,7 +42,8 @@ export class ProductService {
 
     }
 
-    //GET CATEGORIES AND DATA ASSOCIATED
+
+  //GET CATEGORIES AND DATA ASSOCIATED
   public getProductCategories(): Observable<ProductCategory[]>{
 
     //Fetch the categories
@@ -55,7 +53,21 @@ export class ProductService {
 
   }
 
+  //SEARCH FOR PRODUCTS BY KEYWORD
+  public searchProducts(searchKeyword: string): Observable<Product[]>{
+    //url based on the keyword
+    const searchUrl = `${this.baseUrl}/search/findByNameContaining?name=${searchKeyword}`
+    console.log(`search with keyword url being passed to the rest-api = ${searchUrl} `)
+    return this.getProductsFromBackend(searchUrl);
+  }
 
+
+  //BASE AUX METHOD
+  private getProductsFromBackend(searchUrl: string) {
+    return this.httpClient.get<GetResponseProducts>(searchUrl).pipe(
+      map(response => response._embedded.products)
+    )
+  }
 }
 
 
