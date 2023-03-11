@@ -85,12 +85,6 @@ export class CartService {
 
 
 
-
-
-
-
-
-
   removeFromCart(cartItem: CartItem){
     //reduce amount of this specific item
     cartItem.quantity--;

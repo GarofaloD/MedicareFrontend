@@ -12,6 +12,7 @@ import {
 import {SearchComponent} from "../components/search/search.component";
 import {ProductDetailsComponent} from "../components/product-details/product-details.component";
 import {CartIndicatorsComponent} from "../components/cart-indicators/cart-indicators.component";
+import {CartDetailsComponent} from "../components/cart-details/cart-details.component";
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {CartIndicatorsComponent} from "../components/cart-indicators/cart-indica
     ProductCategoryMenuComponent,
     SearchComponent,
     ProductDetailsComponent,
-    CartIndicatorsComponent
+    CartIndicatorsComponent,
+    CartDetailsComponent
   ],
   imports: [
     BrowserModule,
