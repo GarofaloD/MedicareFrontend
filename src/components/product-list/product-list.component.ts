@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {ProductService} from "../../services/product/product.service";
 import {ActivatedRoute} from "@angular/router";
 import {Product} from "../../common/product/product";
+import {CartService} from "../../services/cart/cart.service";
+import {CartItem} from "../../common/cart-item/cart-item";
 
 @Component({
   selector: 'app-product-list',
@@ -17,7 +19,7 @@ export class ProductListComponent implements OnInit{
     searchEnabled: Boolean = false;
 
   //CONTRUCTOR
-    constructor(private productService: ProductService, private route: ActivatedRoute) { }
+    constructor(private productService: ProductService, private route: ActivatedRoute, private cartService: CartService) { }
 
     ngOnInit():void{
       //this.handleSearchProducts()
@@ -97,6 +99,12 @@ export class ProductListComponent implements OnInit{
 
 
   addToCart(product: Product) {
+    console.log(`Product name: ${product.name}, Product price: ${product.unitPrice}`)
+
+    //create a cart item
+    const cartItem = new CartItem(product);
+    //Call the service and add an item to the cart
+    this.cartService.addToCart(cartItem);
 
   }
 }

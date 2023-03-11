@@ -11,6 +11,7 @@ import {
 } from "../components/product-category-menu/product-category-menu/product-category-menu.component";
 import {SearchComponent} from "../components/search/search.component";
 import {ProductDetailsComponent} from "../components/product-details/product-details.component";
+import {CartIndicatorsComponent} from "../components/cart-indicators/cart-indicators.component";
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import {ProductDetailsComponent} from "../components/product-details/product-det
     ProductListComponent,
     ProductCategoryMenuComponent,
     SearchComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    CartIndicatorsComponent
   ],
   imports: [
     BrowserModule,

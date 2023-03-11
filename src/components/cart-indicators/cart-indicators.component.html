@@ -1,0 +1,17 @@
+<div class="cart-area d-n">
+  <!--  cart icon-->
+  <a routerLink="/cart-details">
+    <!--    cart total-->
+    <div class="total">
+      {{totalPrice | currency: 'USD'}}
+<!--      20.00-->
+      <!--      cart quantity-->
+      <span>
+        {{totalQuantity}}
+<!--        3-->
+      </span>
+    </div>
+    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+  </a>
+</div>
+

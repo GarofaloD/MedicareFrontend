@@ -24,7 +24,7 @@
 
             <hr style="width: 50%">
             <div class="price">{{tempProduct.unitPrice | currency:'USD'}}</div>
-            <button href="#" class="btn btn-primary btn-sm" >Add to Cart</button>
+            <button href="#" class="btn btn-primary btn-sm" (click)="addToCart(tempProduct)">Add to Cart</button>
           </div>
         </div>
 
