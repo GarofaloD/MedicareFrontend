@@ -42,7 +42,9 @@ export class CheckoutComponent implements OnInit{
       //second form in the group: payment
       payment: this.formBuilder.group({
         creditCardNumber: [''],
-        creditCardExpirationDate: [''],
+        nameOnCreditCard:[''],
+        creditCardExpirationMonth: [''],
+        creditCardExpirationYear: [''],
         creditCardSecurityCode: [''],
         creditCardZipCode: [''],
       })
@@ -72,25 +74,25 @@ export class CheckoutComponent implements OnInit{
     console.log(this.checkoutFormGroup.get('customer')?.value);
 
     //set up order
-    let order = new Order()
-    order.totalPrice = this.totalPrice;
-    order.totalQuantity = this.totalQuantity;
-
-    //get cart items
-    const cartItems = this.cartService.itemsInCart;
-
-    //create order items
-    //--short way: map the array of items in the cart and create a new order item for each of the elements in the cart
-    let itemsInOrder : OrderItem[] = cartItems.map(tempItemInCart => new OrderItem(tempItemInCart) )
-
-    //set up purchase
-    let purchase = new Purchase();
-    purchase.customer = this.checkoutFormGroup.controls['customer'].value;
-    purchase.order = order;
-    purchase.orderItems = itemsInOrder;
-
-    this.checkoutService.setMessage(purchase)
-    console.log(purchase)
+    // let order = new Order()
+    // order.totalPrice = this.totalPrice;
+    // order.totalQuantity = this.totalQuantity;
+    //
+    // //get cart items
+    // const cartItems = this.cartService.itemsInCart;
+    //
+    // //create order items
+    // //--short way: map the array of items in the cart and create a new order item for each of the elements in the cart
+    // let itemsInOrder : OrderItem[] = cartItems.map(tempItemInCart => new OrderItem(tempItemInCart) )
+    //
+    // //set up purchase
+    // let purchase = new Purchase();
+    // purchase.customer = this.checkoutFormGroup.controls['customer'].value;
+    // purchase.order = order;
+    // purchase.orderItems = itemsInOrder;
+    //
+    // this.checkoutService.setMessage(purchase)
+    // console.log(purchase)
 
   }
 

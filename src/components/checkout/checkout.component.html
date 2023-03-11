@@ -42,33 +42,44 @@
         </div>
 
 
-        <!-- second form in the group : payment-->
-        <div formGroupName="payment" class="form-area">
-          <h3>Payment</h3>
+        <!-- second form in the group : shippingAddress-->
+        <div formGroupName="shippingAddress" class="form-area">
+          <h3>Shipping Address</h3>
 
           <div class="row">
-            <div class="col-md-2"><label>Credit Card #</label></div>
+            <div class="col-md-2"><label>Address 1</label></div>
             <div class="col-md-9">
               <div class="input-space">
-                <input formControlName="creditCardNumber" type="text">
+                <input formControlName="address1" type="text">
               </div>
             </div>
           </div>
 
           <div class="row">
-            <div class="col-md-2"><label>Expiration Date</label></div>
+            <div class="col-md-2"><label>Address2</label></div>
             <div class="col-md-9">
               <div class="input-space">
-                <input formControlName="creditCardExpirationDate" type="text">
+                <input formControlName="address2" type="text">
               </div>
             </div>
           </div>
 
           <div class="row">
-            <div class="col-md-2"><label>Security Code</label></div>
+            <div class="col-md-2"><label>City</label></div>
             <div class="col-md-9">
               <div class="input-space">
-                <input formControlName="creditCardSecurityCode" type="text">
+                <input formControlName="city" type="text">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-2"><label>State</label></div>
+            <div class="col-md-9">
+              <div class="input-space">
+                <select formControlName="state">
+                  <option>STATES GO HERE</option>
+                </select>
               </div>
             </div>
           </div>
@@ -77,16 +88,12 @@
             <div class="col-md-2"><label>Zip Code</label></div>
             <div class="col-md-9">
               <div class="input-space">
-                <input formControlName="creditCardZipCode" type="text">
+                <input formControlName="addressZipCode" type="text">
               </div>
             </div>
           </div>
 
         </div>
-
-
-
-
 
 
         <!-- third form in the group : payment-->
@@ -103,7 +110,25 @@
           </div>
 
           <div class="row">
-            <div class="col-md-2"><label>Expiration Date</label></div>
+            <div class="col-md-2"><label>Name on Card</label></div>
+            <div class="col-md-9">
+              <div class="input-space">
+                <input formControlName="nameOnCreditCard" type="text">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-2"><label>Expiration Month</label></div>
+            <div class="col-md-9">
+              <div class="input-space">
+                <input formControlName="creditCardExpirationDate" type="text">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-2"><label>Expiration Year</label></div>
             <div class="col-md-9">
               <div class="input-space">
                 <input formControlName="creditCardExpirationDate" type="text">
