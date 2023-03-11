@@ -21,8 +21,8 @@ export class CheckoutComponent implements OnInit{
 
   ngOnInit():void{
 
-    this.reviewCartDetails();
 
+    this.reviewCartDetails();
 
     this.checkoutFormGroup = this.formBuilder.group({
       //first form in the group: customer
@@ -37,7 +37,7 @@ export class CheckoutComponent implements OnInit{
         address2: [''],
         city: [''],
         state: [''],
-        zipcode: [''],
+        addressZipCode: [''],
       }),
       //second form in the group: payment
       payment: this.formBuilder.group({
@@ -50,6 +50,9 @@ export class CheckoutComponent implements OnInit{
       })
     })
 
+
+
+
   }
 
 
@@ -60,12 +63,16 @@ export class CheckoutComponent implements OnInit{
     //get the total price
     this.cartService.totalPrice.subscribe(data =>{
       this.totalPrice = data
+
     })
 
     //get the total quantity
     this.cartService.totalQuantity.subscribe(data =>{
       this.totalQuantity = data
     })
+
+    console.log(this.totalPrice)
+    console.log(this.totalQuantity)
 
   }
 
