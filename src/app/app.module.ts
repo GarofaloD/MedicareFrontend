@@ -13,6 +13,8 @@ import {SearchComponent} from "../components/search/search.component";
 import {ProductDetailsComponent} from "../components/product-details/product-details.component";
 import {CartIndicatorsComponent} from "../components/cart-indicators/cart-indicators.component";
 import {CartDetailsComponent} from "../components/cart-details/cart-details.component";
+import {CheckoutComponent} from "../components/checkout/checkout.component";
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -22,12 +24,14 @@ import {CartDetailsComponent} from "../components/cart-details/cart-details.comp
     SearchComponent,
     ProductDetailsComponent,
     CartIndicatorsComponent,
-    CartDetailsComponent
+    CartDetailsComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
 
   ],
   providers: [ProductService],

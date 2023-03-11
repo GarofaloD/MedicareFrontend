@@ -1,0 +1,161 @@
+<div class="main-content page-m">
+  <div class="section-content section-content-p30">
+    <div class="container-fluid">
+
+
+
+      <form [formGroup]="checkoutFormGroup">
+
+
+        <!--        first form in the group : customer-->
+        <div formGroupName="customer" class="form-area">
+          <h3>Customer</h3>
+
+          <div class="row">
+            <div class="col-md-2"><label>First Name</label></div>
+            <div class="col-md-9">
+              <div class="input-space">
+<!--                name of control in form form group-->
+                <input formControlName="firstName" type="text">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-2"><label>Last Name</label></div>
+            <div class="col-md-9">
+              <div class="input-space">
+                <input formControlName="lastName" type="text">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-2"><label>Email</label></div>
+            <div class="col-md-9">
+              <div class="input-space">
+                <input formControlName="email" type="text">
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+
+        <!-- second form in the group : payment-->
+        <div formGroupName="payment" class="form-area">
+          <h3>Payment</h3>
+
+          <div class="row">
+            <div class="col-md-2"><label>Credit Card #</label></div>
+            <div class="col-md-9">
+              <div class="input-space">
+                <input formControlName="creditCardNumber" type="text">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-2"><label>Expiration Date</label></div>
+            <div class="col-md-9">
+              <div class="input-space">
+                <input formControlName="creditCardExpirationDate" type="text">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-2"><label>Security Code</label></div>
+            <div class="col-md-9">
+              <div class="input-space">
+                <input formControlName="creditCardSecurityCode" type="text">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-2"><label>Zip Code</label></div>
+            <div class="col-md-9">
+              <div class="input-space">
+                <input formControlName="creditCardZipCode" type="text">
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+
+
+
+
+
+        <!-- third form in the group : payment-->
+        <div formGroupName="payment" class="form-area">
+          <h3>Payment</h3>
+
+          <div class="row">
+            <div class="col-md-2"><label>Credit Card #</label></div>
+            <div class="col-md-9">
+              <div class="input-space">
+                <input formControlName="creditCardNumber" type="text">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-2"><label>Expiration Date</label></div>
+            <div class="col-md-9">
+              <div class="input-space">
+                <input formControlName="creditCardExpirationDate" type="text">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-2"><label>Security Code</label></div>
+            <div class="col-md-9">
+              <div class="input-space">
+                <input formControlName="creditCardSecurityCode" type="text">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-2"><label>Zip Code</label></div>
+            <div class="col-md-9">
+              <div class="input-space">
+                <input formControlName="creditCardZipCode" type="text">
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+
+        <!--        fourth form in the group : Order Details-->
+
+        <div class="form-area">
+          <h3>Review Your Order</h3>
+
+          <p>Total Quantity: {{totalQuantity}} items</p>
+          <p>Total Price: {{totalPrice | currency: 'USD'}}</p>
+
+        </div>
+
+
+        <!--        submit-->
+
+        <div class="text-end">
+          <button routerLink="/order-confirmation"  type="submit" class="btn btn-info" (click)="onSubmit()">Confirm Order</button>
+        </div>
+
+      </form>
+
+
+
+
+    </div>
+  </div>
+</div>
+
+
