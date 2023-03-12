@@ -2,6 +2,11 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder} from "@angular/forms";
 import {CartService} from "../../services/cart/cart.service";
 import {CheckoutService} from "../../services/checkout/checkout.service";
+import {Router} from "@angular/router";
+import {Order} from "../../common/order/order";
+import {OrderItem} from "../../common/order-item/order-item";
+import {Purchase} from "../../common/purchase/purchase";
+import {Customer} from "../../common/customer/customer";
 
 @Component({
   selector: 'app-checkout',
@@ -16,7 +21,7 @@ export class CheckoutComponent implements OnInit{
   totalQuantity: number = 0
 
 
-  constructor(private formBuilder: FormBuilder, private cartService: CartService, private checkoutService: CheckoutService) {
+  constructor(private formBuilder: FormBuilder, private cartService: CartService, private checkoutService: CheckoutService, private router: Router) {
   }
 
   ngOnInit():void{
@@ -32,12 +37,12 @@ export class CheckoutComponent implements OnInit{
         email: [''],
       }),
       //second form in the group: payment
-      shippingAddress: this.formBuilder.group({
+      address: this.formBuilder.group({
         address1: [''],
         address2: [''],
         city: [''],
         state: [''],
-        addressZipCode: [''],
+        zipCode: [''],
       }),
       //second form in the group: payment
       payment: this.formBuilder.group({
@@ -76,32 +81,60 @@ export class CheckoutComponent implements OnInit{
 
   }
 
+  //submit the order
   onSubmit(){
     console.log("Handling the submit button")
     console.log(this.checkoutFormGroup.get('customer')?.value);
 
-    //set up order
-    // let order = new Order()
-    // order.totalPrice = this.totalPrice;
-    // order.totalQuantity = this.totalQuantity;
-    //
-    // //get cart items
-    // const cartItems = this.cartService.itemsInCart;
-    //
-    // //create order items
-    // //--short way: map the array of items in the cart and create a new order item for each of the elements in the cart
-    // let itemsInOrder : OrderItem[] = cartItems.map(tempItemInCart => new OrderItem(tempItemInCart) )
-    //
-    // //set up purchase
-    // let purchase = new Purchase();
-    // purchase.customer = this.checkoutFormGroup.controls['customer'].value;
-    // purchase.order = order;
-    // purchase.orderItems = itemsInOrder;
-    //
-    // this.checkoutService.setMessage(purchase)
-    // console.log(purchase)
+    //create purchase
+    let purchase = new Purchase();
+
+    //assemble purchase: customer & address
+    purchase.customer = this.checkoutFormGroup.controls['customer'].value
+    purchase.address = this.checkoutFormGroup.controls['address'].value;
+
+
+    //create order
+    let order = new Order()
+    order.totalPrice = this.totalPrice;
+    order.totalQuantity = this.totalQuantity;
+
+    //get cart items from service and add them to the inner container
+    let cartItems = this.cartService.itemsInCart;
+    let itemsInOrder : OrderItem[] = cartItems.map(tempItemInCart => new OrderItem(tempItemInCart) )
+
+    //assemble purchase: order & order items
+    purchase.systemOrder = order;
+    purchase.orderItems = itemsInOrder
+
+
+    //submit the purchase to the backend
+    this.checkoutService.placeOrder(purchase).subscribe({
+      next: response =>{
+        alert(`Your order has been placed. Your tracking number: ${response.orderTracker}`)
+        //clearing cart
+        this.clearUserCart();
+      },
+      error:  error =>{
+        alert(`There was a problem with your purchase: ${error.message}`)
+      }
+    })
+    console.log(purchase)
 
   }
+
+
+  private clearUserCart() {
+    this.cartService.itemsInCart = [];
+    this.cartService.totalQuantity.next( 0);
+    this.cartService.totalPrice.next( 0);
+
+    this.checkoutFormGroup.reset();
+
+    this.router.navigateByUrl("/products")
+
+  }
+
 
 
 

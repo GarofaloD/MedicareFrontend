@@ -7,7 +7,7 @@ export class Purchase {
 
   customer! : Customer;
   address! : Address;
-  order! : Order
+  systemOrder! : Order
   orderItems! : OrderItem[]
 
 
