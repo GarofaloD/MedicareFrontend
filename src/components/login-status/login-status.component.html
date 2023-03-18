@@ -11,4 +11,10 @@
 <!--  if logged in-->
   <button *ngIf="isAuthenticated" (click)="logout()" class="securityTracker-btn">Logout</button>
 
+
+<!--  if logged in-->
+  <button *ngIf="isAuthenticated" routerLink="/members" class="securityTracker-btn ml-1">Member</button>
+
+
+
 </div>

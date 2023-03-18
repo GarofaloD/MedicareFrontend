@@ -17,6 +17,7 @@ import {CheckoutComponent} from "../components/checkout/checkout.component";
 import {ReactiveFormsModule} from "@angular/forms";
 import {LoginComponent} from "../components/login/login.component";
 import {LoginStatusComponent} from "../components/login-status/login-status.component";
+import {MembersLandingPageComponent} from "../components/members-landing-page/members-landing-page.component"
 
 //OKTA
 import{
@@ -31,9 +32,6 @@ import appConfig from "../config/app-config";
 const oktaConfig = appConfig.oidc;
 const oktaAuth = new OktaAuth(oktaConfig);
 
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,7 +43,8 @@ const oktaAuth = new OktaAuth(oktaConfig);
     CartDetailsComponent,
     CheckoutComponent,
     LoginComponent,
-    LoginStatusComponent
+    LoginStatusComponent,
+    MembersLandingPageComponent
   ],
   imports: [
     BrowserModule,
