@@ -1,8 +1,8 @@
 <div class="login-status-header">
 
 <!--  show welcome label when logged in-->
-  <div *ngIf="isAuthenticated && userCredentials" class="login-status-user-info">
-    <label>Welcome back, {{userCredentials}}</label>
+  <div *ngIf="isAuthenticated && userFullName" class="login-status-user-info">
+    <label>Welcome back, {{userFullName}}</label>
   </div>
 
 <!--  if not logged in -->

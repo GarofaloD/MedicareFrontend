@@ -13,18 +13,19 @@ import OktaSignIn from "@okta/okta-signin-widget";
 export class LoginComponent implements OnInit{
 
   //PROPERTIES
-  oktaSignInData: any;
+  oktaSignin: any;
 
 
   //CONSTRUCTOR
   constructor(@Inject(OKTA_AUTH) private oktaAuth: OktaAuth) {
 
     //base widget config
-    this.oktaSignInData = new OktaSignIn({
-      logo:'src/favicon.ico',
+    this.oktaSignin = new OktaSignIn({
+      logo:'favicon.ico',
       baseUrl: appConfig.oidc.issuer.split('/oauth2')[0],
       clientId: appConfig.oidc.clientId,
       redirectUri: appConfig.oidc.redirectUri,
+      useClassicEngine: true,
       authParams:{
         //proof key
         pkce: true,
@@ -36,10 +37,13 @@ export class LoginComponent implements OnInit{
   }
 
   ngOnInit(): void {
+
     //clear all previous info
-    this.oktaSignInData.remove();
+    this.oktaSignin.remove();
+
+
     //render widget
-    this.oktaSignInData.renderEl({
+    this.oktaSignin.renderEl({
       //render component with this id, as configured on login.component.html
       el: '#okta-sign-in-widget'
     },

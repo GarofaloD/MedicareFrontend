@@ -11,7 +11,7 @@ export class LoginStatusComponent implements OnInit{
 
   //PROPERTIES
   isAuthenticated: boolean = false;
-  userCredentials: string = '';
+  userFullName: string = '';
 
 
   //CONSTRUCTOR
@@ -24,7 +24,7 @@ export class LoginStatusComponent implements OnInit{
     this.oktaAuthService.authState$.subscribe(
       (result) => {
         this.isAuthenticated = result.isAuthenticated!;
-        this.extracted();
+        this.getUserDetails();
       }
     )
 
@@ -33,13 +33,13 @@ export class LoginStatusComponent implements OnInit{
 
 
   //AUX METHODS
-  private extracted() {
+  getUserDetails() {
     if(this.isAuthenticated){
       //get user details
 
       this.oktaAuth.getUser().then(
         (res) =>{
-          this.userCredentials = res.name as string;
+          this.userFullName = res.name as string;
         }
       )
     }
