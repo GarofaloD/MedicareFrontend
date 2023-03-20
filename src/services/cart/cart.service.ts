@@ -13,8 +13,25 @@ export class CartService {
   totalQuantity: Subject<number> = new BehaviorSubject<number>(0)
 
 
+  //browser storage to prevent clearing data when refreshing
+  browserStorage: Storage = sessionStorage;
 
-  constructor() { }
+
+  constructor() {
+
+    //get data from the session storage associated with itemsInCart
+    let data = JSON.parse(this.browserStorage.getItem('itemsInCart')!);
+
+
+    if(data != null){
+      //if nothing previously there...
+      this.itemsInCart = data;
+      //and then, give us totals
+      this.calculateCartTotals();
+    }
+
+
+  }
 
 
   //ADDING PRODUCTS TO CART
@@ -68,8 +85,10 @@ export class CartService {
     this.totalQuantity.next(totalQuantityValue)
     this.logCartData(totalPriceValue, totalQuantityValue);
 
-  }
+    //save cart info in session storage
+    this.persistCartItems()
 
+  }
 
   private logCartData(totalPriceValue: number, totalQuantityValue: number) {
 
@@ -81,8 +100,6 @@ export class CartService {
     console.log(`totalPrice : ${totalPriceValue}, totalQuantity: ${totalQuantityValue}`)
     console.log(`--------`)
   }
-
-
 
 
   removeFromCart(cartItem: CartItem){
@@ -110,6 +127,11 @@ export class CartService {
       //once deleted, recalculate totals
       this.calculateCartTotals()
     }
+  }
+
+  persistCartItems(){
+    //based on key/value pair that comes from session storage
+    this.browserStorage.setItem('itemsInCart', JSON.stringify(this.itemsInCart))
   }
 
 
