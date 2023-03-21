@@ -22,7 +22,7 @@ export class OrderHistoryService {
   //Get all the orders from the backend
   getOrderHistory(userEmail: string):Observable<GetResponseOrderHistory>{
 
-    let orderHistoryURL = `${this.baseUrl_checkOrders}/search/findByCustomerEmail?email=${userEmail}`
+    let orderHistoryURL = `${this.baseUrl_checkOrders}/search/findByCustomerEmailOrderByDateCreatedDesc?email=${userEmail}`
 
     return this.httpClient.get<GetResponseOrderHistory>(orderHistoryURL)
 

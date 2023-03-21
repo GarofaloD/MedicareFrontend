@@ -17,6 +17,7 @@ import {
 import {OktaAuth} from '@okta/okta-auth-js';
 import appConfig from "../config/app-config";
 import {MembersLandingPageComponent} from "../components/members-landing-page/members-landing-page.component";
+import {OrderHistoryComponent} from "../components/order-history/order-history.component";
 
 const oktaConfig = appConfig.oidc;
 const oktaAuth = new OktaAuth(oktaConfig);
@@ -29,6 +30,7 @@ function sendToLoginPage(oktaAuth: OktaAuth, injector: Injector){
 
 
 const routes: Routes = [
+  {path: 'order-history', component:OrderHistoryComponent, canActivate: [OktaAuthGuard], data:{onAuthRequired: sendToLoginPage}}, //if authenticated, we'll get to this page, otherwise it should take us to /login
   {path: 'members', component:MembersLandingPageComponent, canActivate: [OktaAuthGuard], data:{onAuthRequired: sendToLoginPage}}, //if authenticated, we'll get to this page, otherwise it should take us to /login
 
   {path: 'login/callback', component:OktaCallbackComponent}, //once auth, user will be redirected here

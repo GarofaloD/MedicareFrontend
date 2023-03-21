@@ -1,1 +1,41 @@
-<p>order-history works!</p>
+<div class="main-content">
+  <div class="section-content section-content-p30">
+    <div class="container-fluid">
+
+      <h3>Order History</h3>
+
+      <div *ngIf="orderHistoryList.length > 0">
+        <table class="table table-hover">
+          <thead class="thead-dark table-dark">
+          <tr>
+            <th>Order Date</th>
+            <th>Number Of Items</th>
+            <th>Total Price</th>
+            <th>Order Tracker</th>
+
+
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let tempOrderInHistory of orderHistoryList">
+            <td>{{tempOrderInHistory.dateCreated | date: 'medium'}}</td>
+            <td>{{tempOrderInHistory.totalQuantity}}</td>
+            <td>{{tempOrderInHistory.totalPrice | currency: 'USD'}}</td>
+            <td>{{tempOrderInHistory.orderTracker}}</td>
+
+          </tr>
+
+          </tbody>
+        </table>
+      </div>
+
+<!--      if no orders-->
+      <div *ngIf="orderHistoryList.length == 0" class="alert alert-warning col-md-12" style="margin-top: 50px" role="alert">
+        <h4>You have not placed any orders yet</h4>
+        <a routerLink="/products" class="mt-5">Back to Main Page</a>
+      </div>
+
+
+    </div>
+  </div>
+</div>
