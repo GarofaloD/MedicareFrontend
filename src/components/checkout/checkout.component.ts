@@ -20,6 +20,9 @@ export class CheckoutComponent implements OnInit{
   totalPrice: number = 0
   totalQuantity: number = 0
 
+  //session storage - hold the email to prepopulate email in checkout form
+  sessionStorage: Storage = sessionStorage;
+
 
   constructor(private formBuilder: FormBuilder, private cartService: CartService, private checkoutService: CheckoutService, private router: Router) {
   }
@@ -28,6 +31,11 @@ export class CheckoutComponent implements OnInit{
 
 
     this.reviewCartDetails();
+
+    //get the user email from the storage -- userEmail is the key
+    let customerEmail = JSON.stringify(this.sessionStorage.getItem('userEmail')!);
+
+
 
     this.checkoutFormGroup = this.formBuilder.group({
       //first form in the group: customer
